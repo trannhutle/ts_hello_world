@@ -12,6 +12,7 @@ interface IProps {
 }
 
 const Confirm: React.SFC<IProps> = (props) => {
+  
   const handleOkClick = () => {
     console.log("Ok clicke", props);
     props.onOkClick();
