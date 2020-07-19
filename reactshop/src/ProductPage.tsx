@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { Prompt, RouteComponentProps } from "react-router-dom";
 import { IProduct, products } from "./ProductsData";
 
 type Props = RouteComponentProps<{ id: string }>;
@@ -16,22 +16,27 @@ class ProductPage extends React.Component<Props, IState> {
       added: false,
     };
   }
+
   public componentDidMount() {
     if (this.props.match.params.id) {
       const id: number = parseInt(this.props.match.params.id, 10);
       const product = products.filter((p) => p.id === id)[0];
-
       this.setState({ product });
     }
   }
-  private handleAddClick() {
+
+  private navAwayMessage = () =>
+    "Are you sure leave without buying this products?";
+
+  private handleAddClick = () => {
     this.setState({ added: true });
-  }
+  };
 
   render() {
     const product = this.state.product;
     return (
       <div className="page-container">
+        <Prompt when={!this.state.added} message={this.navAwayMessage} />
         {product ? (
           <React.Fragment>
             <h1>{product.name}</h1>
