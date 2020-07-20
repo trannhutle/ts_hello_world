@@ -1,1 +1,1 @@
-# Implementation of the `React with Typescript 3` book: 
+# Implementation of the `Learn React with TypeScript 3` book: 
